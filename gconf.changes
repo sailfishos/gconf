@@ -1,0 +1,87 @@
+* Thu Sep 29 2011 Marko Saukko <marko.saukko@cyberom.com> - 3.1.3
+- Dropped some dependencies to gtk stuff.
+
+* Fri Jul 08 2011 Ross Burton <ross@linux.intel.com> - 3.1.3
+- New upstream release, with integrated DBus port
+
+* Wed Jun 29 2011 Ross Burton <ross@linux.intel.com> - 2.32.4.0.dbus
+- Remove ORBit from the pkg-config file
+
+* Tue Jun 28 2011 Ross Burton <ross@linux.intel.com> - 2.32.4.0.dbus
+- DBusified again.
+
+* Sun Jun 12 2011 Anas Nashif <anas.nashif@intel.com> - 2.32.3
+- Move to upstream GConf and util the dbus version is forward 
+  ported
+
+* Thu May 19 2011 Anas Nashif <anas.nashif@intel.com> - 2.29.1
+- Move documentation to -devel package
+
+* Mon Feb 07 2011 Patrick McCarty <patrick.mccarty@linux.intel.com> - 2.29.1
+- (BMC#7184) Update package to latest version (2.29.1)
+
+* Wed Jun 23 2010 Rob Bradford <rob@linux.intel.com> - 2.29.0
+- Switch to using MeeGo source rather than Moblin
+
+* Wed Apr 21 2010 Ross Burton <ross@linux.intel.com> - 2.29.0
+- Patch out the system source, we don't enable the defaults service (MBC#276)
+- Also disable it in postinst for upgrades
+
+* Tue Mar 23 2010 Anas Nashif <anas.nashif@intel.com> - 2.29.0
+- Dont depend on gtk
+
+* Sun Feb 07 2010 Anas Nashif <anas.nashif@intel.com> - 2.29.0
+- Require grep and sed for %post section (MB#9519)
+
+* Thu Jan 07 2010 Ross Burton <ross@linux.intel.com> - 2.29.0
+- Merge gettext_domain support in the schemas
+
+* Mon Oct 05 2009 Anas Nashif <anas.nashif@intel.com> - 2.26.2ross2
+- Do not build with openldap
+
+* Mon Sep 1 2009 Rob Bradford <rob@linux.intel.com> 2.26.2ross3
+- Add Moblin schema directory to search path
+
+* Fri Aug 28 2009 Ross Burton <ross@linux.intel.com> 2.26.2ross2
+- More integration with upstream
+- Add recursive preloading, thanks Zhenqiang Chen
+
+* Wed Jun 24 2009 Ross Burton <ross@linux.intel.com> 2.26.2ross1
+- New upstream "release"
+- Merged all of the trivial upstream changes, and integrated all of the patches
+
+* Mon Jun 08 2009 Ross Burton <ross@linux.intel.com> 2.16.0
+- Add negative caching patch from upstream (thanks Zhenqiang Chen <zhenqiang.chen@intel.com>)
+
+* Tue Mar 10 2009 Xu Li <xu.li@intel.com> 2.16.0
+- Reimplment gconf_ping_daemon() to fix bug#1156; patch added
+
+* Thu Feb 12 2009 Ross Burton <ross@linux.intel.com> 2.16.0-2
+- Add optimisation patches from upstream.
+
+* Mon Dec 08 2008 Xu Li <xu.li@intel.com> 2.16.0
+- Remove "Conflicts: GConf2-devel"
+
+* Tue Nov 25 2008 Xu Li <xu.li@intel.com> 2.16.0
+- Add missing requires: dbus & dbus-devel
+
+* Mon Nov 03 2008 Anas Nashif <anas.nashif@intel.com> 2.16.0
+- obsoletes GConf2
+
+* Mon Nov 03 2008 Anas Nashif <anas.nashif@intel.com> 2.16.0
+- obsoletes GConf2
+
+* Fri Sep 26 2008 Xu Li <xu.li@intel.com> 2.16.0
+- Add conflicts: GConf2 & GConf2-devel
+
+* Thu Sep 25 2008 Xu Li <xu.li@intel.com> 2.16.0
+- Add %doc to man/doc files
+
+* Thu Sep 25 2008 Xu Li <xu.li@intel.com> 2.16.0
+- Fix the lang issue
+
+* Thu Sep 25 2008 Xu Li <xu.li@intel.com> 2.16.0
+- Add missing buildrequires & requires
+
+* Thu Sep 25 2008 Xu Li <xu.li@intel.com> 2.16.0
+- Initial import
