@@ -1,4 +1,10 @@
-* Thu Sep 29 2011 Marko Saukko <marko.saukko@cyberom.com> - 3.1.3
+* Wed Nov 30 2011 Marko Saukko <marko.saukko@cybercom.com> - 3.2.3
+- Updated to 3.2.3
+- Added .yaml for spectacle
+- Fixed install deps.
+- Separated translations to separate lang subpackage.
+
+* Thu Sep 29 2011 Marko Saukko <marko.saukko@cybercom.com> - 3.1.3
 - Dropped some dependencies to gtk stuff.
 
 * Fri Jul 08 2011 Ross Burton <ross@linux.intel.com> - 3.1.3

@@ -1,0 +1,72 @@
+Name: gconf
+Summary: A process-transparent configuration system
+Version: 3.2.3
+Release: 1
+Group: System Environment/Base
+License: LGPLv2+
+URL: http://projects.gnome.org/gconf/
+Sources:
+    - http://download.gnome.org/sources/GConf/3.1/GConf-%{version}.tar.xz
+    - macros.gconf2
+Patches:
+    - GConf-2.18.0.1-reload.patch
+    # http://bugzilla.gnome.org/show_bug.cgi?id=568845
+    - GConf-gettext.patch
+Description: |
+    GConf is a process-transparent configuration database API used to
+    store user preferences. It has pluggable backends and features to
+    support workgroup administration.
+
+Requires:
+    # For GConf-2.18.0.1-reload.patch
+    - /usr/bin/killall
+    - dbus
+PkgBR:
+    - autoconf
+    - automake
+    - gettext
+    - intltool
+    - libtool
+    - pkgconfig >= 0.14
+PkgConfigBR:
+    - dbus-glib-1 >= 0.8
+    - glib-2.0 >= %{glib2_version}
+    - libxslt
+    - polkit-gobject-1 >= 0.92
+Provides:
+    - GConf-dbus = %{version}
+    - GConf2 = %{version}
+Obsoletes:
+    - GConf-dbus <= 2.29.1
+    - GConf2 < %{version}
+Conflicts:
+    - GConf-dbus <= 2.29.1
+    - GConf2 < %{version}
+ConfigOptions:
+    - --enable-defaults-service
+    - --disable-orbit
+Builder: make
+# Not used as we have translations in separate package.
+NoAutoLocale: true
+SetupOptions: -q -n GConf-%{version}
+SubPackages:
+    - Name: devel
+      Summary: Headers and libraries for GConf development
+      Group: Development/Libraries
+      Description: |
+          GConf development package. Contains files needed for doing
+          development using GConf.
+      Requires:
+          - "%{name} = %{version}"
+          - automake
+          - pkgconfig
+          - pkgconfig(glib-2.0) >= %{glib2_version}
+      Obsoletes:
+          - GConf-dbus-devel <= 2.29.1
+      Conflicts:
+          - GConf-dbus-devel <= 2.29.1
+    - Name: lang
+      Summary: Translations for Gconf
+      Group: Development/Libraries
+      Description: |
+          GConf translation package.
