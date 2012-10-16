@@ -1,3 +1,6 @@
+* Sun Oct 21 2012 Islam Amer <islam.amer@jollamobile.com> - 3.2.3-1
+- Fix runtime usage of gconf gsettings module
+
 * Wed Nov 30 2011 Marko Saukko <marko.saukko@cybercom.com> - 3.2.3
 - Updated to 3.2.3
 - Added .yaml for spectacle

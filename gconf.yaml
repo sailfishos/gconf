@@ -8,6 +8,7 @@ URL: http://projects.gnome.org/gconf/
 Sources:
     - http://download.gnome.org/sources/GConf/3.1/GConf-%{version}.tar.xz
     - macros.gconf2
+    - gconf.sh
 Patches:
     - GConf-2.18.0.1-reload.patch
     # http://bugzilla.gnome.org/show_bug.cgi?id=568845
@@ -21,6 +22,10 @@ Requires:
     # For GConf-2.18.0.1-reload.patch
     - /usr/bin/killall
     - dbus
+RequiresPost:
+    - /usr/bin/gio-querymodules
+RequiresPostUn:
+    - /usr/bin/gio-querymodules
 PkgBR:
     - autoconf
     - automake
