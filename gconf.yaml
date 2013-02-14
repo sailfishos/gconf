@@ -13,6 +13,8 @@ Patches:
     - GConf-2.18.0.1-reload.patch
     # http://bugzilla.gnome.org/show_bug.cgi?id=568845
     - GConf-gettext.patch
+    # https://bugzilla.gnome.org/show_bug.cgi?id=683830
+    - GConf-3.2.3-init-dbus-glib-for-multithreading.patch
 Description: |
     GConf is a process-transparent configuration database API used to
     store user preferences. It has pluggable backends and features to

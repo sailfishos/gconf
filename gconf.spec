@@ -21,6 +21,7 @@ Source2:    gconf.sh
 Source100:  gconf.yaml
 Patch0:     GConf-2.18.0.1-reload.patch
 Patch1:     GConf-gettext.patch
+Patch2:     GConf-3.2.3-init-dbus-glib-for-multithreading.patch
 Requires:   /usr/bin/killall
 Requires:   dbus
 Requires(post): /usr/bin/gio-querymodules
@@ -83,6 +84,8 @@ GConf translation package.
 %patch0 -p1
 # GConf-gettext.patch
 %patch1 -p1
+# GConf-3.2.3-init-dbus-glib-for-multithreading.patch
+%patch2 -p1
 # >> setup
 # << setup
 

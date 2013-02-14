@@ -1,0 +1,53 @@
+From c57654617b0bd8a42f26607295c1d71eae72b5d3 Mon Sep 17 00:00:00 2001
+From: Chow Loong Jin <hyperair@debian.org>
+Date: Wed, 12 Sep 2012 06:48:54 +0800
+Subject: [PATCH] Initialize DBus Glib for multithreading
+
+GConf with the DBus backend has been crashing a couple of multi-threaded
+applications due to the 1.6.4 libdbus update, with a stacktrace that looks
+similar to:
+
+ _dbus_watch_invalidate (watch=0x0) at ../../dbus/dbus-watch.c:154
+ free_watches (transport=0x7f12ee9c9ed0) at
+../../dbus/dbus-transport-socket.c:83
+ socket_disconnect (transport=0x7f12ee9c9ed0) at
+../../dbus/dbus-transport-socket.c:987
+ _dbus_transport_disconnect (transport=0x7f12ee9c9ed0) at
+../../dbus/dbus-transport.c:507
+ _dbus_transport_disconnect (transport=0x7f12ee9c9ed0) at
+../../dbus/dbus-transport.c:498
+
+An example is in https://bugzilla.gnome.org/show_bug.cgi?id=659756. The
+workaround used for that bug was to pull in libdbus just to call
+dbus_g_thread_init(). However, this is ugly, and requires an explicit dependency
+on libdbus for applications that use gconf, even if they do not use dbus
+directly.
+
+This patch calls dbus_g_thread_init() before establishing the connection to DBus
+to avoid the race condition that leads up to the above stack trace.
+
+Signed-off-by: Chow Loong Jin <hyperair@debian.org>
+---
+ gconf/gconf-dbus.c |    7 +++++++
+ 1 file changed, 7 insertions(+)
+
+diff --git a/gconf/gconf-dbus.c b/gconf/gconf-dbus.c
+index f167fc5..1a499d9 100644
+--- a/gconf/gconf-dbus.c
++++ b/gconf/gconf-dbus.c
+@@ -396,6 +396,13 @@ ensure_dbus_connection (void)
+       return FALSE;
+     }
+ 
++  /* Initialize DBus Glib for multithreading -- this fixes race conditions when
++     multi-threaded applications use gconf. Additionally, although the API
++     documentation says that dbus_g_thread_init() may only be called once, it is
++     actually really a wrapper for dbus_threads_init_default() which casn be
++     called as many times as necessary. */
++  dbus_g_thread_init ();
++
+   dbus_error_init (&error);
+ 
+   global_conn = dbus_bus_get_private (DBUS_BUS_SESSION, &error);
+-- 
+1.7.9.5

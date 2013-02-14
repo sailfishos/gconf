@@ -1,3 +1,6 @@
+* Thu Feb 14 2013 Martin Kampas <martin.kampas@tieto.com> - 3.2.3-1
+- Add patch to init dbus glib for multithreading (Gnome bug #683830)
+
 * Sun Oct 21 2012 Islam Amer <islam.amer@jollamobile.com> - 3.2.3-1
 - Fix runtime usage of gconf gsettings module
 
