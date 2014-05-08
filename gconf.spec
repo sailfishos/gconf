@@ -119,6 +119,11 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/
 install -p -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/
 
 mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
+
+# remove gconftool-2
+rm -f %{buildroot}/%{_bindir}/gconftool-2
+rm -f %{buildroot}/%{_mandir}/man1/gconftool-2.1.gz
+
 # << install post
 
 
@@ -152,7 +157,6 @@ fi
 %dir %{_sysconfdir}/gconf/gconf.xml.system
 %dir %{_sysconfdir}/gconf/schemas
 %{_bindir}/gconf-merge-tree
-%{_bindir}/gconftool-2
 %{_bindir}/gsettings-data-convert
 %{_sysconfdir}/xdg/autostart/gsettings-data-convert.desktop
 %{_libexecdir}/gconfd-2
@@ -173,7 +177,6 @@ fi
 %dir %{_localstatedir}/lib/rpm-state/
 %{_localstatedir}/lib/rpm-state/gconf/
 %{_libdir}/gio/modules/libgsettingsgconfbackend.so
-%{_mandir}/man1/gconftool-2.1.gz
 %{_mandir}/man1/gsettings-data-convert.1.gz
 %{_mandir}/man1/gsettings-schema-convert.1.gz
 # << files
