@@ -113,7 +113,6 @@ mkdir -p %{buildroot}%{_sysconfdir}/gconf/gconf.xml.system
 mkdir -p %{buildroot}%{_sysconfdir}/rpm/
 mkdir -p %{buildroot}%{_localstatedir}/lib/rpm-state/gconf
 mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
-mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 
 install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/
 
