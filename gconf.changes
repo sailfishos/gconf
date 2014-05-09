@@ -1,3 +1,6 @@
+* Fri May 09 2014 Mohammed Hassan <mohammed.hassan@jolla.com> - 3.2.3-1
+- drop gconftool-2 from GConf RPM.
+
 * Thu Feb 14 2013 Martin Kampas <martin.kampas@tieto.com> - 3.2.3-1
 - Add patch to init dbus glib for multithreading (Gnome bug #683830)
 
