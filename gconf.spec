@@ -120,7 +120,7 @@ mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
 
 # remove gconftool-2
 rm -f %{buildroot}/%{_bindir}/gconftool-2
-rm -f %{buildroot}/%{_mandir}/man1/gconftool-2.1.gz
+rm -f %{buildroot}/%{_mandir}/man1/gconftool-2.1
 
 # << install post
 
