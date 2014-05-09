@@ -116,7 +116,6 @@ mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
 mkdir -p %{buildroot}%{_sysconfdir}/profile.d
 
 install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/
-install -p -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/
 
 mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
 
