@@ -17,7 +17,6 @@ License:    LGPLv2+
 URL:        http://projects.gnome.org/gconf/
 Source0:    http://download.gnome.org/sources/GConf/3.1/GConf-%{version}.tar.xz
 Source1:    macros.gconf2
-Source2:    gconf.sh
 Source100:  gconf.yaml
 Patch0:     GConf-2.18.0.1-reload.patch
 Patch1:     GConf-gettext.patch
@@ -120,6 +119,11 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_sysconfdir}/rpm/
 install -p -m 644 %{SOURCE2} %{buildroot}%{_sysconfdir}/profile.d/
 
 mkdir -p %{buildroot}%{_datadir}/GConf/gsettings
+
+# remove gconftool-2
+rm -f %{buildroot}/%{_bindir}/gconftool-2
+rm -f %{buildroot}/%{_mandir}/man1/gconftool-2.1.gz
+
 # << install post
 
 
@@ -153,10 +157,8 @@ fi
 %dir %{_sysconfdir}/gconf/gconf.xml.system
 %dir %{_sysconfdir}/gconf/schemas
 %{_bindir}/gconf-merge-tree
-%{_bindir}/gconftool-2
 %{_bindir}/gsettings-data-convert
 %{_sysconfdir}/xdg/autostart/gsettings-data-convert.desktop
-%{_sysconfdir}/profile.d/gconf.sh
 %{_libexecdir}/gconfd-2
 %{_libdir}/*.so.*
 %{_libdir}/GConf/2/*.so
@@ -175,7 +177,6 @@ fi
 %dir %{_localstatedir}/lib/rpm-state/
 %{_localstatedir}/lib/rpm-state/gconf/
 %{_libdir}/gio/modules/libgsettingsgconfbackend.so
-%{_mandir}/man1/gconftool-2.1.gz
 %{_mandir}/man1/gsettings-data-convert.1.gz
 %{_mandir}/man1/gsettings-schema-convert.1.gz
 # << files
